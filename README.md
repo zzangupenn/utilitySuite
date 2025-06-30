@@ -2,7 +2,7 @@
 
  Utility functions designed to streamline your workflow — so you can focus on what matters.
 
-<h3 align="center"> <em>🚀✨ Cut through boilerplate. Save time. Stay focused.</em> 🔥⚡️</h3>
+<h3 align="center"> <em>🚀✨ Cut through boilerplate. Save time. Stay focused.</em> ⚡️🔥</h3>
 
 
 ## ⚙️ Available Tools
