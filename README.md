@@ -5,7 +5,7 @@
 <h3 align="center"> <em>🚀✨ Cut through boilerplate. Save time. Stay focused.</em> ⚡️🔥</h3>
 
 ## 🧱 Usage
-The package is setup so that it only import libraries needed when you create and object. So just pip install needed package as you go. For example:
+The package is set up so that it only imports libraries needed when you create an object. So just pip install the needed package as you go.
 ```
 import utilitySuite as utilsuite # Here only imports a catelog, no functions/classes are imported.
 config = utilsuite.ConfigYAML() # First time using of the functions/classes triggers the import.
