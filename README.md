@@ -1,7 +1,12 @@
-# utilitySuite
-Useful utility functions that save your time
+# 🛠️ utilitySuite
+
+ Utility functions designed to streamline your workflow — so you can focus on what matters.
+
+<h3 align="center"> <em>🚀✨ Cut through boilerplate. Save time. Stay focused.</em> 🔥⚡️</h3>
+
 
 ## ⚙️ Available Tools
+
 
 | Name             | Description |
 |------------------|-------------|
@@ -14,6 +19,6 @@ Useful utility functions that save your time
 | `Timer`          | Simple stopwatch and context-based timing. Perfect for profiling function runtimes, monitoring loop durations, or annotating performance bottlenecks. |
 | `DataProcessor`  | Contains helpers for filtering, structuring, and transforming datasets. Useful for preprocessing logs, lists, or config-driven data. |
 | `colorPalette`   | A curated set of visually balanced color themes for plots and visual output. Enables consistent aesthetics across matplotlib or CLI tools. |
-| `pltUtils`       | Quick-plot functions built on matplotlib — for fast rendering of line plots, histograms, and comparisons with minimal code. Great for debugging or summarizing data visually. |
+| `pltUtils`       | Quick-plot functions built on matplotlib — for fast rendering of line plots, histograms, and comparisons with minimal code. Great for debugging or visually summarizing data. |
 
 
