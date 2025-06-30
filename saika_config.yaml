@@ -1,0 +1,10 @@
+age: 25
+name: saika
+preferences:
+  language: English
+  notifications: true
+  theme: bright
+skills:
+- Python
+- YAML
+- Data Analysis
