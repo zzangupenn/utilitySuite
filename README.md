@@ -10,7 +10,7 @@
 
 | Name             | Description |
 |------------------|-------------|
-| [`utilitySuite`](https://github.com/zzangupenn/utilitySuite/blob/main/utilitySuite/__init__.py)   | Root package entry — supports lazy loading so only the tools you import get loaded. Clean, efficient, and namespace-friendly. |
+| [`utilitySuite`](https://github.com/zzangupenn/utilitySuite/blob/main/utilitySuite/__init__.py)   | Root package entry — supports lazy loading so only the tools you import get loaded. Clean, efficient, and namespace-friendly. Can also be imported as an [Suite](https://github.com/zzangupenn/utilitySuite/blob/main/utilitySuite/utilitysuite.py) |
 | [`ConfigYAML`](https://github.com/zzangupenn/utilitySuite/blob/main/utilitySuite/configyaml.py)      | Simplifies reading and writing YAML configuration files. Offers intuitive dot-access, saves and loads directly to YAML files, and supports nested structures, making experiment setup and configuration management clean and scriptable. |
 | [`ListDict`](https://github.com/zzangupenn/utilitySuite/blob/main/utilitySuite/listdict.py)      | A hybrid structure combining list ordering, dictionary style initialization, and dataclass access. Useful recording data with many categories. Support simple save/load. |
 | [`keyMonitor`](https://github.com/zzangupenn/utilitySuite/blob/main/utilitySuite/keymonitor.py)     | Captures keypress events in real time without blocking the program flow. Ideal for interactive command-line tools or live-control systems. |
