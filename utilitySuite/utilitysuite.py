@@ -1,10 +1,11 @@
-from utilitySuite import ConfigYAML, keyMonitor, Logger, Timer, DataProcessor, colorPalette, pltUtils, ListDict
+
 import os
 class utilitySuite:
     def __init__(self):
         pass
     
     def __new__(self, config=None, create_logger_file=False, config_path=None):
+        from utilitySuite import ConfigYAML, Logger, Timer, DataProcessor, colorPalette, pltUtils, keyMonitor, ListDict
         if config is None:
             if config_path is None:
                 self.config = ConfigYAML()

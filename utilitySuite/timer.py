@@ -59,6 +59,8 @@ class Timer:
 
     def toc(self, print_name='', time_name=None, Hz=False, show=True):
         if self.enable:
+            if print_name in self.times: # print_name has priority over time_name
+                time_name = print_name
             if time_name is None:
                 time_name = str(len(list(self.times.keys())) - 1)
                 if Hz: 

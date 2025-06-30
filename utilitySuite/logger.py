@@ -37,12 +37,12 @@ class Logger:
     
     def create_file(self, experiment_name):
         import datetime
-        print(self.experiment_name)
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
         with open(self.save_dir + experiment_name + '.txt', "a") as tgt:
             tgt.writelines('\n' + '-' * 80 + '\n')
             tgt.writelines(experiment_name + ' ' + str(datetime.datetime.now()) + '\n')
+        print(experiment_name + ' ' + str(datetime.datetime.now()))
             
     def write_file(self, file):
         with open(file, "r") as src:

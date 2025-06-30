@@ -86,7 +86,7 @@ class ListDict:
             else:
                 setattr(self, key, d[key])
                 
-    def save_onefile(self, *keys, save_dir='', filename = 'data_record', compress=False):
+    def save_onefile(self, *keys, save_dir='', filename='data_record', compress=False):
         if len(keys) == 0:
             keys = self.get_keys()
         d = {}
@@ -97,7 +97,7 @@ class ListDict:
         else:
             np.savez(save_dir + filename, **d)
             
-    def load_onefile(self, *keys, save_dir='', filename = 'data_record'):
+    def load_onefile(self, *keys, save_dir='', filename='data_record'):
         d = np.load(save_dir + filename + '.npz', allow_pickle=True)
         if len(keys) == 0:
             keys = list(d.keys())
