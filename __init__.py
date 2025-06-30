@@ -1,3 +1,6 @@
+import importlib
+from typing import Any, TYPE_CHECKING
+
 _lazy_functions = {
     "ConfigYAML": ("configyaml", "ConfigYAML"),
     "Conv2DLayer": ("torch_utils", "Conv2DLayer"),
@@ -15,10 +18,12 @@ _lazy_functions = {
     "TransConv2DLayer": ("torch_utils", "TransConv2DLayer"),
     "_axis_angle_rotation": ("rotation_utils", "_axis_angle_rotation"),
     "angle_w_z": ("rotation_utils", "angle_w_z"),
+    "build_lazy_map": ("generate_init", "build_lazy_map"),
     "cholesky_truncated_gaussian_2d_adjusted": ("jax_utils", "cholesky_truncated_gaussian_2d_adjusted"),
     "colorPalette": ("colorpalette", "colorPalette"),
     "coloredText": ("coloredtext", "coloredText"),
     "euler_2_matrix_sincos": ("rotation_utils", "euler_2_matrix_sincos"),
+    "extract_top_level_defs": ("generate_init", "extract_top_level_defs"),
     "generate_perms": ("jax_utils", "generate_perms"),
     "get_orient_err": ("rotation_utils", "get_orient_err"),
     "get_posit_err": ("rotation_utils", "get_posit_err"),
@@ -42,27 +47,21 @@ _lazy_functions = {
     "utilitySuite": ("utilitysuite", "utilitySuite"),
 }
 
-from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from .coloredtext import *
-    from .colorpalette import *
     from .configyaml import *
-    from .dataprocessor import *
-    from .jax_utils import *
     from .keymonitor import *
-    from .listdict import *
+    from .coloredtext import *
     from .logger import *
-    from .misc import *
-    from .open3dutils import *
-    from .plotlyutils import *
-    from .pltutils import *
-    from .rotation_utils import *
     from .timer import *
-    from .torch_utils import *
+    from .dataprocessor import *
+    from .colorpalette import *
+    from .pltutils import *
+    from .listdict import *
     from .utilitysuite import *
-
-import importlib
-from typing import Any
+    from .misc import *
+    from .torch_utils import *
+    from .jax_utils import *
+    from .rotation_utils import *
 
 def __getattr__(name: str) -> Any:
     if name in _lazy_functions:
@@ -71,4 +70,5 @@ def __getattr__(name: str) -> Any:
         cls = getattr(module, class_name)
         globals()[name] = cls  # Cache to avoid repeated getattr calls
         return cls
+
     raise AttributeError(f"module {__name__} has no attribute {name}")

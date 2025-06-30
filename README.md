@@ -4,10 +4,10 @@
 
 <h3 align="center"> <em>🚀✨ Cut through boilerplate. Save time. Stay focused.</em> 🔥⚡️</h3>
 
+## 🧱 Usage
+The package is setup so that it only import libraries needed when you create and object. So just pip install needed package as you go.
 
 ## ⚙️ Available Tools
-
-
 | Name             | Description |
 |------------------|-------------|
 | [`utilitySuite`](https://github.com/zzangupenn/utilitySuite/blob/main/utilitySuite/__init__.py)   | Root package entry — supports lazy loading so only the tools you import get loaded. Clean, efficient, and namespace-friendly. Can also be imported as an [***Suite***](https://github.com/zzangupenn/utilitySuite/blob/main/utilitySuite/utilitysuite.py) |
@@ -20,5 +20,4 @@
 | [`DataProcessor`](https://github.com/zzangupenn/utilitySuite/blob/main/utilitySuite/dataprocessor.py)  | Contains helpers for filtering, structuring, and transforming datasets. Useful for preprocessing logs, lists, or config-driven data. |
 | [`colorPalette`](https://github.com/zzangupenn/utilitySuite/blob/main/utilitySuite/colorpalette.py)   | A curated set of visually balanced color themes for plots and visual output. Enables consistent aesthetics across matplotlib or CLI tools. |
 | [`pltUtils`](https://github.com/zzangupenn/utilitySuite/blob/main/utilitySuite/pltutils.py)       | Quick-plot functions built on matplotlib — for fast rendering of line plots, histograms, and comparisons with minimal code. Great for debugging or visually summarizing data. |
-
 
