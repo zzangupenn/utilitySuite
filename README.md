@@ -5,7 +5,7 @@
 <h3 align="center"> <em>🚀✨ Cut through boilerplate. Save time. Stay focused.</em> ⚡️🔥</h3>
 
 ## 🧱 Usage
-The package is set up so that it only imports libraries needed when you create an object. So just pip install needed package as you go.
+The package is set up so that it only imports libraries needed when you create an object. So just pip install the needed package as you go.
 
 ## ⚙️ Available Tools
 | Name             | Description |
