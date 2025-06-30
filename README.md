@@ -11,6 +11,8 @@ The package is set up so that it only imports libraries needed when you create a
 
 `config = utilsuite.ConfigYAML()` First time using the functions/classes triggers the import.
 
+See [`examples.ipynb`](https://github.com/zzangupenn/utilitySuite/blob/main/examples.ipynb) for usages.
+
 ## ⚙️ Available Tools
 | Name             | Description |
 |------------------|-------------|
