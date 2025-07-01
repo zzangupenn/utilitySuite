@@ -6,6 +6,13 @@ import jax.numpy as jnp
 from flax.training import orbax_utils
 import orbax
 from functools import partial
+from flax import struct
+
+def make_flax_dataclass(name: str, fields: dict):
+    annotations = {k: float for k in fields}
+    namespace = {"__annotations__": annotations}
+    cls = type(name, (object,), namespace)
+    return struct.dataclass(cls)
 
 def load_state(state, info, path=""):
     orbax_checkpointer = orbax.checkpoint.PyTreeCheckpointer()
@@ -15,6 +22,7 @@ def load_state(state, info, path=""):
     print('Load from model: ', load_filename)
     return state_restored['state'], state_restored['info'].copy()
 
+jax.jit()
 def numpify(x):
     return jax.device_get(x)
 

@@ -25,6 +25,7 @@ _lazy_functions = {
     "get_subsample_inds": ("misc", "get_subsample_inds"),
     "keyMonitor": ("keymonitor", "keyMonitor"),
     "load_state": ("jax_utils", "load_state"),
+    "make_flax_dataclass": ("jax_utils", "make_flax_dataclass"),
     "mmd_multiscale": ("torch_utils", "mmd_multiscale"),
     "modified_sigmoid": ("misc", "modified_sigmoid"),
     "npprint_suppress": ("misc", "npprint_suppress"),
