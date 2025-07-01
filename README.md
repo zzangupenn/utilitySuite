@@ -5,7 +5,7 @@
 <h3 align="center"> <em>🚀✨ Cut through boilerplate. Save time. Stay focused.</em> ⚡️🔥</h3>
 
 ## 🧱 Usage
-The package is set up so that it only imports the necessary libraries when you create an object. Simply pip install the needed package as you go. 
+The package is set up so that it only imports needed libraries when an object is created. Simply pip install the needed package as you go. 
 ```
 git clone git@github.com:zzangupenn/utilitySuite.git
 cd utilitySuite
