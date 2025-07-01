@@ -1,4 +1,4 @@
-import utilitySuite as utilsuite
+import utilsuite
 km = utilsuite.keyMonitor()
 print(f"Type any number key to change km.option()")
 while True:

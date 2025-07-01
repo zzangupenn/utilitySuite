@@ -1,4 +1,4 @@
-import utilitySuite as utilsuite
+import utilsuite
 ct = utilsuite.coloredText()
 ct.print("This is a red text", color='r') # Print text in red color in terminal
 ct.print("This is a green text", color='g')
@@ -10,8 +10,8 @@ ct.print("This is a white text", color='w')
 ct.print("This is a black text", color='k')
 ct.print("This is a orange text", color='o', style='bold')
 
-from utilitySuite import utilitySuite
-us, logline = utilitySuite()
+import utilsuite
+us, logline = utilsuite.utilitySuite()
 import time
 us.timer.tic('process')
 us.timer.tic('step1')
