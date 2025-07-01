@@ -12,10 +12,10 @@ class ConfigYAML():
 
     Methods:
     --------
-    load_file(filename):
+    load(filename):
         Loads key-value pairs from the YAML file and sets them as instance attributes.
 
-    save_file(filename):
+    save(filename):
         Saves instance and class attributes to the specified YAML file.
         Automatically creates the output directory if it doesn't exist.
         NumPy arrays are converted to lists for serialization.

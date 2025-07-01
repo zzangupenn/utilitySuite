@@ -4,7 +4,7 @@ import numpy as np
 
 BN_MOMENTUM = 0.1
 
-def numpify(arr):
+def tnumpify(arr):
     try:
         ret = arr.detach().cpu().numpy()
     except:

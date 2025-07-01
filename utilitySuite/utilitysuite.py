@@ -5,14 +5,14 @@ class utilitySuite:
         pass
     
     def __new__(self, config=None, create_logger_file=False, config_path=None):
-        from utilitySuite import ConfigYAML, Logger, Timer, DataProcessor, colorPalette, pltUtils, keyMonitor, ListDict
+        from . import ConfigYAML, Logger, Timer, DataProcessor, colorPalette, pltUtils, keyMonitor, ListDict
         if config is None:
             if config_path is None:
                 self.config = ConfigYAML()
                 self.config.kmonitor_enable = 0
             else:
                 self.config = ConfigYAML()
-                self.config.load_file(config_path)
+                self.config.load(config_path)
                 if 'kmonitor_enable' not in vars(self.config):
                     self.config.kmonitor_enable = 0
             self.log = Logger('./', '', create_file=create_logger_file)

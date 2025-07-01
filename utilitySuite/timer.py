@@ -42,7 +42,7 @@ class Timer:
         self.nums = {}
         import time
         self.time = time
-        from utilitySuite import coloredText
+        from . import coloredText
         self.ct = coloredText()
         
     def tic(self, time_name=None, num=1):
