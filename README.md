@@ -16,7 +16,7 @@ See [`examples.ipynb`](https://github.com/zzangupenn/utilitySuite/blob/main/exam
 ## ⚙️ Available Tools
 | Name             | Description |
 |------------------|-------------|
-| [`utilsuite`](https://github.com/zzangupenn/utilitySuite/blob/main/utilsuite/__init__.py)   | Root package entry — supports lazy loading so only the tools you import get loaded. Clean, efficient, and namespace-friendly. Can also be imported as an [***Suite***](https://github.com/zzangupenn/utilitySuite/blob/main/utilsuite/utilsuite.py) |
+| [`utilsuite`](https://github.com/zzangupenn/utilitySuite/blob/main/utilsuite/__init__.py)   | Root package entry — supports lazy loading so only the tools you import get loaded. Clean, efficient, and namespace-friendly. Can also be imported as an [***Suite***](https://github.com/zzangupenn/utilitySuite/blob/main/utilsuite/utilitySuite.py) |
 | [`ConfigYAML`](https://github.com/zzangupenn/utilitySuite/blob/main/utilsuite/configyaml.py)      | Simplifies reading and writing YAML configuration files. Offers intuitive dot-access, saves and loads directly to YAML files, and supports nested structures, making experiment setup and configuration management clean and scriptable. |
 | [`ListDict`](https://github.com/zzangupenn/utilitySuite/blob/main/utilsuite/listdict.py)      | A hybrid structure combining list ordering, dictionary style initialization, and dataclass access. Useful for recording data with many categories. Support simple save/load. |
 | [`keyMonitor`](https://github.com/zzangupenn/utilitySuite/blob/main/utilsuite/keymonitor.py)     | Captures keypress events in real time without blocking the program flow. Ideal for interactive command-line tools or live-control systems. |
