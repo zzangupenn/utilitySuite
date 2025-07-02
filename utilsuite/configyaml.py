@@ -1,7 +1,6 @@
 import yaml, os
 import numpy as np
 from pathlib import Path
-
 class ConfigYAML():
     """
     A configuration helper class for reading from and writing to YAML files.

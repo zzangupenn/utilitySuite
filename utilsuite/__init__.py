@@ -18,6 +18,7 @@ _lazy_functions = {
     "cholesky_truncated_gaussian_2d_adjusted": ("jax_utils", "cholesky_truncated_gaussian_2d_adjusted"),
     "colorPalette": ("colorpalette", "colorPalette"),
     "coloredText": ("coloredtext", "coloredText"),
+    "coloredTqdm": ("coloredtext", "coloredTqdm"),
     "euler_2_matrix_sincos": ("rotation_utils", "euler_2_matrix_sincos"),
     "generate_perms": ("jax_utils", "generate_perms"),
     "get_orient_err": ("rotation_utils", "get_orient_err"),

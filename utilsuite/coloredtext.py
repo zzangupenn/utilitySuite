@@ -71,3 +71,16 @@ class coloredText:
         background = self.background_dict.get(background, self.background_dict['default'])
         style = self.style_dict.get(style, '')
         print(f"{color}{background}{style}{text}{self.reset}")
+
+class coloredTqdm:
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def __new__(self, max_len, color='w', **kwargs):
+        from colorama import Fore
+        from tqdm import tqdm
+        ct = coloredText()
+        self.color_dict = ct.color_dict
+        color = self.color_dict[color] if color in self.color_dict else self.color_dict['default']
+        return tqdm(total=max_len, bar_format="{l_bar}%s{bar}%s{r_bar}" % (color, Fore.RESET), **kwargs)

@@ -22,9 +22,11 @@ def load_state(state, info, path=""):
     print('Load from model: ', load_filename)
     return state_restored['state'], state_restored['info'].copy()
 
-jax.jit
 def jnumpify(x):
     return jax.device_get(x)
+
+# def jnumpify(x):
+#     return np.array(jax.device_get(x))
 
 class Polar2Cartesian():
     def cartesian_to_polar(self, x, y):
