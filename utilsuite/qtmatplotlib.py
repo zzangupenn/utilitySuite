@@ -1,6 +1,6 @@
 import numpy as np
 
-class qtPlt:
+class QtMatplotlib:
     def __init__(self, timer_delay=1, win_title="QtMatplotlib"):
         import pyqtgraph as pg
         self.pg = pg

@@ -11,6 +11,7 @@ _lazy_functions = {
     "PositionalEncoding": ("torch_utils", "PositionalEncoding"),
     "PositionalEncoding_jax": ("jax_utils", "PositionalEncoding_jax"),
     "PositionalEncoding_torch": ("torch_utils", "PositionalEncoding_torch"),
+    "QtMatplotlib": ("qtmatplotlib", "QtMatplotlib"),
     "Timer": ("timer", "Timer"),
     "TransConv2DLayer": ("torch_utils", "TransConv2DLayer"),
     "_axis_angle_rotation": ("rotation_utils", "_axis_angle_rotation"),
@@ -36,7 +37,6 @@ _lazy_functions = {
     "open3dUtils": ("open3dutils", "open3dUtils"),
     "plotlyUtils": ("plotlyutils", "plotlyUtils"),
     "pltUtils": ("pltutils", "pltUtils"),
-    "qtPlt": ("qtplt", "qtPlt"),
     "qvec2rotmat": ("rotation_utils", "qvec2rotmat"),
     "readTXT": ("misc", "readTXT"),
     "tnumpify": ("torch_utils", "tnumpify"),
@@ -61,7 +61,7 @@ if TYPE_CHECKING:
     from .open3dutils import *
     from .plotlyutils import *
     from .pltutils import *
-    from .qtplt import *
+    from .qtmatplotlib import *
     from .rotation_utils import *
     from .timer import *
     from .torch_utils import *
