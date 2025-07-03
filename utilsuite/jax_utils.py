@@ -1,12 +1,25 @@
-import flax
-import jax
+import flax, os, jax, orbax
 from jax import random
 import numpy as np
 import jax.numpy as jnp
-from flax.training import orbax_utils
-import orbax
 from functools import partial
 from flax import struct
+DEBUG = int(os.environ.get("DEBUG_LEVEL_ZZR", 0)) > 0
+
+def jax_jit(fn=None, *, enable=not DEBUG, static_argnums=()):
+    """
+    Can be used as:
+      @jax_jit(enable=True, static_argnums=(0,))
+      or
+      f = jax_jit(fn, enable=True, static_argnums=(0,))
+    """
+    def decorator(f):
+        if enable:
+            return partial(jax.jit, static_argnums=static_argnums)(f)
+        else:
+            return f
+    if fn is None: return decorator # Case 1: used as @toggle_jit(...)
+    return decorator(fn) # Case 2: used as toggle_jit(fn, ...)
 
 def make_flax_dataclass(name: str, fields: dict):
     annotations = {k: float for k in fields}

@@ -24,6 +24,7 @@ _lazy_functions = {
     "get_orient_err": ("rotation_utils", "get_orient_err"),
     "get_posit_err": ("rotation_utils", "get_posit_err"),
     "get_subsample_inds": ("misc", "get_subsample_inds"),
+    "jax_jit": ("jax_utils", "jax_jit"),
     "jnumpify": ("jax_utils", "jnumpify"),
     "keyMonitor": ("keymonitor", "keyMonitor"),
     "load_state": ("jax_utils", "load_state"),

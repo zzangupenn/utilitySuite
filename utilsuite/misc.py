@@ -13,7 +13,7 @@ def truncated_normal_sampler(mean, std, lower_bound, upper_bound, size=1):
     a, b = (lower_bound - mean) / std, (upper_bound - mean) / std
     return stats.truncnorm.rvs(a, b, loc=mean, scale=std, size=size)    
 
-def get_subsample_inds(length, subsample_num):
+def get_subsample_inds(length, subsample_num=None):
     if subsample_num is None:
         return np.arange(length)
     if subsample_num > length:
