@@ -36,6 +36,7 @@ _lazy_functions = {
     "open3dUtils": ("open3dutils", "open3dUtils"),
     "plotlyUtils": ("plotlyutils", "plotlyUtils"),
     "pltUtils": ("pltutils", "pltUtils"),
+    "qtPlt": ("qtplt", "qtPlt"),
     "qvec2rotmat": ("rotation_utils", "qvec2rotmat"),
     "readTXT": ("misc", "readTXT"),
     "tnumpify": ("torch_utils", "tnumpify"),
@@ -60,6 +61,7 @@ if TYPE_CHECKING:
     from .open3dutils import *
     from .plotlyutils import *
     from .pltutils import *
+    from .qtplt import *
     from .rotation_utils import *
     from .timer import *
     from .torch_utils import *

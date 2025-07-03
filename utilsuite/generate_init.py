@@ -1,13 +1,17 @@
 import os
 import ast
 
+excluded_names = {
+    'QtPlotterProcess'
+}
+
 def extract_top_level_defs(filepath):
     """Extract top-level function and class names from a Python file."""
     with open(filepath, "r", encoding="utf-8") as f:
         tree = ast.parse(f.read())
     names = []
     for node in tree.body:
-        if isinstance(node, (ast.FunctionDef, ast.ClassDef)):
+        if isinstance(node, (ast.FunctionDef, ast.ClassDef)) and node.name not in excluded_names:
             names.append(node.name)
     return names
 
