@@ -1,7 +1,7 @@
 import numpy as np
 
 class QtMatplotlib:
-    def __init__(self, timer_delay=1, win_title="QtMatplotlib"):
+    def __init__(self, timer_delay=1, win_title="QtMatplotlib", show_fps=False):
         import pyqtgraph as pg
         self.pg = pg
         import PyQt6
@@ -11,9 +11,7 @@ class QtMatplotlib:
         self.total_plot_num = 0
         self.send_dict = {'add': {}, 'update': []}
         self.window_exist = False
-        self.pg.setConfigOption('background', 'w')
-        self.pg.setConfigOption('foreground', 'k')
-
+        self.show_fps = show_fps
         
     def xlabel(self, label: str):
         self._send_axis_update(x_label=label)
@@ -54,8 +52,6 @@ class QtMatplotlib:
         elif x is None:
             x = np.asarray(x)
             y = np.arange(len(y))
-        else:
-            raise ValueError("plot() accepts either plot(y) or plot(x, y)")
 
         color = kwargs.get("color", 'k')  # default: black
         width = kwargs.get("linewidth", 2)
@@ -74,14 +70,20 @@ class QtMatplotlib:
 
     def _init_process(self):
         import multiprocessing as mp
-        self.queue = mp.Queue()
+        ctx = mp.get_context("spawn")  # force spawn context
+        self.queue = ctx.Queue()
         self.plot_process = QtPlotterProcess()
-        self.process = mp.Process(target=self.plot_process.run, args=(
+        self.start_event = ctx.Event()
+        self.process = ctx.Process(target=self.plot_process.run, args=(
             self.queue,
             self.timer_delay,
-            self.win_title
+            self.win_title,
+            self.start_event,
+            self.show_fps,
         ))
+        self.process.daemon = True  # 🔧 ensures it dies with the parent
         self.process.start()
+        self.start_event.wait()
         self.window_exist = True
     
     def _add_plot(self, plot_num, live, plot_type, **kwargs):
@@ -111,14 +113,17 @@ class QtMatplotlib:
 class QtPlotterProcess:
 
     def __init__(self):
+        pass
+
+    def run(self, queue, timer_delay, win_title, start_event, show_fps):
         import pyqtgraph as pg
         self.pg = pg
         import PyQt6
         self.PyQt6 = PyQt6
-
-    def run(self, queue, timer_delay, win_title, show_fps=False):
         self.queue = queue
         self.app = self.PyQt6.QtWidgets.QApplication([])
+        self.pg.setConfigOption('background', 'k')
+        self.pg.setConfigOption('foreground', 'w')
         self.win = self.pg.GraphicsLayoutWidget(title=win_title)
         self.win.show()
         self.figure = self.win.addPlot(title='')
@@ -156,6 +161,7 @@ class QtPlotterProcess:
             self.elapsed_timer.start()
             self.frame_count = 0
         import sys
+        start_event.set()
         sys.exit(self.app.exec())
         
     def eventFilter(self, obj, event):
