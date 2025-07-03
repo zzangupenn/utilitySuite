@@ -36,20 +36,31 @@ class ConfigYAML():
         d_out = {}
         for key in list(class_d.keys()):
             if not (key.startswith('__') or \
-                    key.startswith('load') or \
-                    key.startswith('save')):
+                    key == 'load' or \
+                    key == 'save'):
                 if isinstance(class_d[key], np.ndarray):
                     d_out[key] = class_d[key].tolist()
                 else:
                     d_out[key] = class_d[key]
         for key in list(d.keys()):
             if not (key.startswith('__') or \
-                    key.startswith('load') or \
-                    key.startswith('save')):
+                    key == 'load' or \
+                    key == 'save'):
                 if isinstance(d[key], np.ndarray):
                     d_out[key] = d[key].tolist()
                 else:
                     d_out[key] = d[key]
         with open(filename, 'w+') as ff:
             yaml.dump_all([d_out], ff)
+            
+    def __str__(self):
+        d = vars(self)
+        class_d = vars(self.__class__)
+        return '\n'.join([f"{key}: {d[key]}" for key in d if not (key.startswith('__') or \
+                                                                  key == 'load' or \
+                                                                  key == 'save')]) + \
+               '\n' + \
+               '\n'.join([f"{key}: {class_d[key]}" for key in class_d if not (key.startswith('__') or \
+                                                                              key == 'load' or \
+                                                                              key == 'save')])
             
