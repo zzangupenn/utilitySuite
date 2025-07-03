@@ -35,7 +35,7 @@ class QtMatplotlib:
             'colors': c
         })
         self._update_plot(live)
-
+    
     def plot(self, x=None, y=None, live=False, plot_num=None, name="", **kwargs):
         """
         Usage like matplotlib.pyplot.plot():
@@ -46,12 +46,12 @@ class QtMatplotlib:
         if x is None and y is None:
             raise ValueError("plot() requires either x or y")
 
-        if y is None:
-            x = np.arange(len(x))
+        if x is None:
+            x = np.arange(len(y))
             y = np.asarray(y)
-        elif x is None:
-            x = np.asarray(x)
-            y = np.arange(len(y))
+        elif y is None:
+            y = np.asarray(x)
+            x = np.arange(len(x))
 
         color = kwargs.get("color", 'k')  # default: black
         width = kwargs.get("linewidth", 2)
@@ -106,6 +106,8 @@ class QtMatplotlib:
             self.total_plot_num -= 1
             
     def _send_axis_update(self, **kwargs):
+        if not self.window_exist:
+            self._init_process()
         self.queue.put({'axis': kwargs})
             
     
@@ -128,12 +130,12 @@ class QtPlotterProcess:
         self.win.show()
         self.figure = self.win.addPlot(title='')
         self.figure.enableAutoRange('xy', True)
-        self.figure.setAspectLocked(True)
+        # self.figure.setAspectLocked(True)
         import matplotlib.pyplot as plt
         self.colormap = plt.get_cmap('viridis')
         self.axis_config = {
-            "x_label": "",
-            "y_label": "",
+            "x_label": None,
+            "y_label": None,
             "xlim": None,
             "ylim": None
         }
@@ -176,10 +178,12 @@ class QtPlotterProcess:
         if self.axis_config["y_label"]:
             self.figure.setLabel("left", self.axis_config["y_label"])
         if self.axis_config["xlim"]:
-            self.figure.setXRange(*self.axis_config["xlim"], padding=0)
+            self.figure.enableAutoRange(x=False)
+            self.figure.setXRange(self.axis_config["xlim"][0], self.axis_config["xlim"][1])
         if self.axis_config["ylim"]:
-            self.figure.setYRange(*self.axis_config["ylim"], padding=0)
-    
+            self.figure.enableAutoRange(y=False)
+            self.figure.setYRange(self.axis_config["ylim"][0], self.axis_config["ylim"][1])
+
     def _update_fps_text(self):
         self.frame_count += 1
         elapsed = self.elapsed_timer.elapsed()
@@ -229,14 +233,13 @@ class QtPlotterProcess:
         self.data[plot_num] = (kwargs['x'], kwargs['y'])
 
     def update_figure(self):
-        # print("Updating figure...", time.time())
         while not self.queue.empty():
             data = self.queue.get()
             
             if 'axis' in data:
                 for key, value in data['axis'].items():
                     self.axis_config[key] = value
-                self._apply_axis_config()
+            self._apply_axis_config()
 
             # Handle new plots
             for add_dict in data.get('add', []):
