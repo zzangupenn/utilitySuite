@@ -38,19 +38,22 @@ class QtMatplotlib:
         })
         self._update_plot(live)
 
-    def plot(self, *args, live=False, plot_num=None, name="", **kwargs):
+    def plot(self, x=None, y=None, live=False, plot_num=None, name="", **kwargs):
         """
         Usage like matplotlib.pyplot.plot():
         - plot(y)
         - plot(x, y)
         - plot(x, y, color='r', linewidth=2)
         """
-        if len(args) == 1:
-            y = np.asarray(args[0])
-            x = np.arange(len(y))
-        elif len(args) == 2:
-            x = np.asarray(args[0])
-            y = np.asarray(args[1])
+        if x is None and y is None:
+            raise ValueError("plot() requires either x or y")
+
+        if y is None:
+            x = np.arange(len(x))
+            y = np.asarray(y)
+        elif x is None:
+            x = np.asarray(x)
+            y = np.arange(len(y))
         else:
             raise ValueError("plot() accepts either plot(y) or plot(x, y)")
 
