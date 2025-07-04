@@ -120,12 +120,12 @@ class QtPlotterProcess:
     def run(self, queue, timer_delay, win_title, start_event, show_fps):
         import pyqtgraph as pg
         self.pg = pg
+        self.pg.setConfigOption('background', '#191919')
+        self.pg.setConfigOption('foreground', 'w')
         import PyQt6
         self.PyQt6 = PyQt6
         self.queue = queue
         self.app = self.PyQt6.QtWidgets.QApplication([])
-        self.pg.setConfigOption('background', 'k')
-        self.pg.setConfigOption('foreground', 'w')
         self.win = self.pg.GraphicsLayoutWidget(title=win_title)
         self.win.show()
         self.figure = self.win.addPlot(title='')
