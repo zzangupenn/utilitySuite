@@ -114,16 +114,16 @@ class pltUtils:
         self.axs[ax_num].get_xaxis().set_visible(False)
         self.axs[ax_num].get_yaxis().set_visible(False)
 
-    def colorbar(self, ax_num, cmap='viridis', data_ind=0, location='right', label=''):
+    def colorbar(self, ax_num, cmap='viridis', data_ind=0, location='right', label='', pad=0.04):
         if len(self.axs[ax_num].collections) > 0:
             cbar = self.plt.colorbar(self.axs[ax_num].collections[data_ind], 
                                      ax=self.axs[ax_num], cmap=cmap, 
-                                     location=location, label=label)
+                                     location=location, label=label, pad=pad)
         elif len(self.axs[ax_num].images) > 0:
             cbar = self.plt.colorbar(self.axs[ax_num].images[data_ind], 
                                      ax=self.axs[ax_num], cmap=cmap, 
-                                     location=location, label=label)
-        
+                                     location=location, label=label, pad=pad)
+
             
     def y(self, ax_num, limit):
         self.axs[ax_num].set_ylim(limit)
@@ -143,7 +143,7 @@ class pltUtils:
         self.win_closed = False
     
     def save_fig(self, filename):
-        self.plt.savefig(filename, bbox_inches='tight')
+        self.plt.savefig(filename, bbox_inches='tight', pad_inches=0)
         
     def close_all(self):
         self.plt.close('all')
